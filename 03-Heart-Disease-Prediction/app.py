@@ -116,7 +116,7 @@ st.caption("Enter patient details below to perform an automated risk assessment.
 st.divider()
 
 if model is None:
-    st.warning("⚠️ Model file `heart_disease_model.pkl` was not found. Please save your trained pipeline first.")
+    st.warning("⚠️ Model file `Heart_Disease_Model.pkl` was not found. Please save your trained pipeline first.")
 
 # Main Input Form
 with st.form("patient_form"):
