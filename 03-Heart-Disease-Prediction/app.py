@@ -95,19 +95,33 @@ st.markdown("""
     
 import os
 
-# Load Saved Model Pipeline
+# Load Saved Model Pipeline with Multi-Path Fallback
 @st.cache_resource
 def load_model():
-    try:
-        # Resolves path relative to app.py location
-        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-        model_path = os.path.join(BASE_DIR, 'Heart_Disease_Model.pkl')
-        return joblib.load(model_path)
-    except Exception as e:
-        st.error(f"Error loading model: {e}")
-        return None
+    # List possible locations for the model file
+    possible_paths = [
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Heart_Disease_Model.pkl'),
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), 'heart_disease_model.pkl'),
+        'Heart_Disease_Model.pkl',
+        'heart_disease_model.pkl',
+        '03-Heart-Disease-Prediction/Heart_Disease_Model.pkl',
+        '03-Heart-Disease-Prediction/heart_disease_model.pkl'
+    ]
+    
+    for path in possible_paths:
+        if os.path.exists(path):
+            try:
+                return joblib.load(path)
+            except Exception as err:
+                st.error(f"Found file at `{path}`, but failed to load: {err}")
+                return None
+                
+    st.error(f"Current Directory: `{os.getcwd()}`")
+    st.error(f"Files in Directory: `{os.listdir('.')}`")
+    return None
 
 model = load_model()
+
 
 # Sidebar Configuration
 with st.sidebar:
