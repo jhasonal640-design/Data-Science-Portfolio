@@ -96,7 +96,7 @@ st.markdown("""
 @st.cache_resource
 def load_model():
     try:
-        return joblib.load('heart_disease_model.pkl')
+        return joblib.load('Heart_Disease_Model.pkl')
     except Exception:
         return None
 
