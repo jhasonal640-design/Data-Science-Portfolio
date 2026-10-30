@@ -28,3 +28,21 @@ Welcome to my Machine Learning portfolio! This repository highlights end-to-end 
 * **Machine Learning:** Scikit-Learn
 * **Data Visualization:** Seaborn, Matplotlib
 * **Environment:** Jupyter Notebook
+
+
+
+
+### 3. ❤️ [Heart Disease Risk Prediction App](./03-Heart-Disease-Prediction/)
+* **Problem Type:** Binary Classification & Web Deployment
+* **Goal:** Predict cardiovascular risk levels using patient vitals and biometric data, deployed as an interactive web dashboard.
+* **Key Steps:** Built a data leakage-free `Pipeline` with `ColumnTransformer` (`StandardScaler` for continuous numerical features and `OneHotEncoder` for categorical parameters), trained baseline classifiers (Logistic Regression, KNN, Decision Tree, SVM), and deployed the optimal model via Streamlit.
+* **Interactive Features:** Customized a dark navy dashboard UI featuring real-time BMI calculations and dynamic Plotly gauge chart visualizations for patient risk assessment.
+* **Live App:** [View Live Streamlit Web App](YOUR_STREAMLIT_APP_URL_HERE)
+
+## 🛠️ Tech Stack & Tools
+* **Language:** Python
+* **Data Processing:** Pandas, NumPy
+* **Machine Learning:** Scikit-Learn
+* **Data Visualization:** Seaborn, Matplotlib, Plotly
+* **Web Framework & Deployment:** Streamlit
+* **Environment:** Jupyter Notebook, Anaconda Desktop
