@@ -92,12 +92,19 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+    
+import os
+
 # Load Saved Model Pipeline
 @st.cache_resource
 def load_model():
     try:
-        return joblib.load('Heart_Disease_Model.pkl')
-    except Exception:
+        # Resolves path relative to app.py location
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        model_path = os.path.join(BASE_DIR, 'Heart_Disease_Model.pkl')
+        return joblib.load(model_path)
+    except Exception as e:
+        st.error(f"Error loading model: {e}")
         return None
 
 model = load_model()
